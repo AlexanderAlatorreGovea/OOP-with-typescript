@@ -8,6 +8,8 @@ export class Message {
     this.message = message;
     this.isSent = false;
   }
+
+  
 }
 
 const message = new Message('hello', "world")

@@ -9,9 +9,11 @@
 */
 (() => {
   class User {
-    firstName: string;
-    lastName: string;
-    email: string;
+    public readonly id: string;
+    public firstName: string;
+    public lastName: string;
+    public email: string;
+    protected dob: Date;
 
     constructor(firstName: string, lastName: string, email: string) {
       this.firstName = firstName;
@@ -19,42 +21,47 @@
       this.email = email;
     }
 
-    get fullName(): string {
+    public get fullName(): string {
       return `${this.firstName} ${this.lastName}`;
     }
 
-    doesNotMatch(email: string): boolean {
+    public doesNotMatch(email: string): boolean {
       return this.email === email;
     }
   }
 
   class Admin extends User {
+    public readonly yearBorn: number;
     constructor(firstName: string, lastName: string, email: string) {
       super();
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+      this.yearBorn = this.getYear();
+    }
+
+    private getYear(): number {
+      return this.dob.getFullYear();
     }
   }
 
-  class Guest implements User {
-    firstName: string;
-    lastName: string;
-    email: string;
+  // class Guest implements User {
+  //   firstName: string;
+  //   lastName: string;
+  //   email: string;
 
-    constructor(firstName: string, lastName: string, email: string) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-    }
+  //   constructor(firstName: string, lastName: string, email: string) {
+  //     this.firstName = firstName;
+  //     this.lastName = lastName;
+  //     this.email = email;
+  //   }
 
+  //   get fullName(): string {
+  //     return `${this.firstName}, ${this.lastName}`;
+  //   }
 
-    get fullName(): string {
-      return `${this.firstName}, ${this.lastName}`;
-    }
-
-    doesNotMatch(email: string): boolean {
-      return this.email === email;
-    }
-  }
+  //   doesNotMatch(email: string): boolean {
+  //     return this.email === email;
+  //   }
+  // }
 })();

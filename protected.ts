@@ -1,5 +1,5 @@
 class Animal {
-  public age: number;
+  protected age: number;
   private legs: number;
   name: string;
 
@@ -13,10 +13,9 @@ class Animal {
   }
 }
 
-class Cat extends Animal {
-  constructor(data: { age: number; legs: number; name: string }) {
-    super(data.age, data.legs, data.name);
-  }
+class Dog implements Animal {
+    age: number;
+    legs: number;
+    name: string;
 }
-const cat = new Cat({ age: 19, legs: 4, name: "Baby" });
-console.log(cat.ourLegs);
+

@@ -18,4 +18,8 @@
       return this.email === email;
     }
   }
+
+  class BaseUser extends User {
+      protected role: string;
+  }
 })();
